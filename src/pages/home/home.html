@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Transactions
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <br />
+  <button ion-button (click)="onNewTransaction()">Add transaction</button>
+  <br />
+
+  <ion-list *ngIf="transactionsService">
+    <ion-item-sliding *ngFor="let transaction of transactionsService.data; let i = index">
+      <ion-item>
+        <h2>{{transaction.label}}</h2>
+        <p>{{transaction.description}}</p>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="secondary">Edit</button>
+      </ion-item-options>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="onRemove(i)">Remove</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+</ion-content>
