@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Platform } from 'ionic-angular';
 
 import TransactionsService from '../../services/transactions.service';
 import Transaction from '../../services/transaction';
+
+import { TransactionPage } from '../transaction/transaction';
 
 @Component({
   selector: 'page-home',
@@ -12,23 +13,23 @@ import Transaction from '../../services/transaction';
 export class HomePage {
   transactionsService: TransactionsService;
 
-  constructor(platform: Platform, navCtrl: NavController) {
-    platform.ready()
-      .then(() => {
-        this.transactionsService = new TransactionsService();
-        return this.transactionsService.get();
-      })
-    .catch(err => console.warn(err));
+  constructor(public navCtrl: NavController) {
+    this.transactionsService = new TransactionsService();
+    this.transactionsService.get();
+  }
+
+  goToTransactionPage() {
+    this.navCtrl.push(TransactionPage);
   }
 
   onRemove(index) {
     this.transactionsService.removeByIndex(index);
   }
 
-  onNewTransaction() {
-    this.transactionsService
-      .add(new Transaction(`new-${this.transactionsService.data.length}`, 'description'))
-      .then(() => this.transactionsService.get());
+  ionViewWillEnter() {
+    if(this.transactionsService) {
+      this.transactionsService.get();
+    }
   }
 
 }
