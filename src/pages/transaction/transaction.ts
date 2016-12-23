@@ -10,19 +10,29 @@ import Transaction from '../../services/transaction';
 })
 export class TransactionPage {
   transactionsService: TransactionsService;
-  newTransition: Transaction;
+  transition: Transaction;
+  transactionIndex: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.transactionsService = new TransactionsService();
-    this.newTransition = new Transaction('', '');
-    this.transactionsService.get();
+    this.transactionIndex = navParams.get('transactionIndex');
+    console.log(this.transactionIndex);
+    this.transactionsService.get()
+    this.transition = new Transaction('', '');
+      // .then(() => {
+      //   if (this.transactionIndex){
+      //     this.transition = this.transactionsService.data[this.transactionIndex];
+      //   } else {
+      //     this.transition = new Transaction('', '');
+      //   }
+      // });
   }
 
   onNewTransaction() {
     this.transactionsService
-      .add(this.newTransition)
+      .add(this.transition)
       .then(() => {
-        this.newTransition = new Transaction('', '');
+        this.transition = new Transaction('', '');
         this.transactionsService.get()
       });
   }

@@ -17,7 +17,7 @@
         <p>{{transaction.description}}</p>
       </ion-item>
       <ion-item-options side="left">
-        <button ion-button color="secondary">Edit</button>
+        <button ion-button color="secondary" (click)="onEdit(i)">Edit</button>
       </ion-item-options>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="onRemove(i)">Remove</button>

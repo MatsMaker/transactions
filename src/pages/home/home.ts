@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import TransactionsService from '../../services/transactions.service';
-import Transaction from '../../services/transaction';
 
 import { TransactionPage } from '../transaction/transaction';
 
@@ -12,6 +11,7 @@ import { TransactionPage } from '../transaction/transaction';
 })
 export class HomePage {
   transactionsService: TransactionsService;
+  params: Object;
 
   constructor(public navCtrl: NavController) {
     this.transactionsService = new TransactionsService();
@@ -20,6 +20,10 @@ export class HomePage {
 
   goToTransactionPage() {
     this.navCtrl.push(TransactionPage);
+  }
+
+  onEdit(index) {
+    this.navCtrl.push(TransactionPage, {transactionIndex: index});
   }
 
   onRemove(index) {
