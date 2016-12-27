@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="transition">Edit {{transition.label}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngIf="transition">
+    <ion-item>
+      <ion-label color="primary" floating>Price</ion-label>
+      <ion-input type="number" [(ngModel)]="transition.price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Label</ion-label>
+      <ion-input type="text" [(ngModel)]="transition.label"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Description</ion-label>
+      <ion-input type="text" [(ngModel)]="transition.description"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button full color="secondary" (click)="onUpdateTransaction()">save</button>
+
+</ion-content>

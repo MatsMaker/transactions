@@ -3,7 +3,10 @@ import { NavController } from 'ionic-angular';
 
 import TransactionsService from '../../services/transactions.service';
 
-import { TransactionPage } from '../transaction/transaction';
+import { TransactionDetailsPage } from '../transaction-details/transaction-details';
+import { TransactionEditPage } from '../transaction-edit/transaction-edit';
+import { TransactionNewPage } from '../transaction-new/transaction-new';
+import { TotalPage } from '../total/total';
 
 @Component({
   selector: 'page-home',
@@ -18,12 +21,20 @@ export class HomePage {
     this.transactionsService.get();
   }
 
-  goToTransactionPage() {
-    this.navCtrl.push(TransactionPage);
+  toTotal() {
+    this.navCtrl.push(TotalPage);
   }
 
-  onEdit(index) {
-    this.navCtrl.push(TransactionPage, {transactionIndex: index});
+  toNew(index) {
+    this.navCtrl.push(TransactionNewPage);
+  }
+
+  toView(index) {
+    this.navCtrl.push(TransactionDetailsPage, {transactionIndex: index});
+  }
+
+  toEdit(index) {
+    this.navCtrl.push(TransactionEditPage, {transactionIndex: index});
   }
 
   onRemove(index) {

@@ -3,13 +3,19 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { TransactionPage } from '../pages/transaction/transaction';
+import { TransactionNewPage } from '../pages/transaction-new/transaction-new';
+import { TransactionEditPage } from '../pages/transaction-edit/transaction-edit';
+import { TransactionDetailsPage } from '../pages/transaction-details/transaction-details';
+import { TotalPage } from '../pages/total/total';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TransactionPage
+    TransactionNewPage,
+    TransactionEditPage,
+    TransactionDetailsPage,
+    TotalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -18,7 +24,10 @@ import { TransactionPage } from '../pages/transaction/transaction';
   entryComponents: [
     MyApp,
     HomePage,
-    TransactionPage
+    TransactionNewPage,
+    TransactionEditPage,
+    TransactionDetailsPage,
+    TotalPage
   ],
   providers: [{
     provide: ErrorHandler,

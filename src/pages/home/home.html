@@ -2,8 +2,11 @@
   <ion-toolbar>
     <ion-title>All transactions</ion-title>
     <ion-buttons menuToggle="right">
-      <button ion-button color="secondary" (click)="goToTransactionPage()">
-        <ion-icon name="add"></ion-icon>&nbsp;New
+      <button ion-button color="danger" (click)="toTotal()">
+        Total
+      </button>
+      <button ion-button color="secondary" (click)="toNew()">
+        New
       </button>
     </ion-buttons>
   </ion-toolbar>
@@ -13,14 +16,15 @@
   <ion-list *ngIf="transactionsService">
     <ion-item-sliding *ngFor="let transaction of transactionsService.data; let i = index">
       <ion-item>
-        <h2>{{transaction.label}}</h2>
-        <p>{{transaction.description}}</p>
+        <h2>{{transaction.price}} {{transaction.label}}</h2>
+        <p>{{transaction.updatedAt | date:'medium'}}</p>
       </ion-item>
       <ion-item-options side="left">
-        <button ion-button color="secondary" (click)="onEdit(i)">Edit</button>
+        <button ion-button color="danger" (click)="onRemove(i)">remove</button>
       </ion-item-options>
       <ion-item-options side="right">
-        <button ion-button color="danger" (click)="onRemove(i)">Remove</button>
+        <button ion-button color="secondary" (click)="toEdit(i)">edit</button>
+        <button ion-button (click)="toView(i)">details</button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>

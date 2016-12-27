@@ -5,10 +5,10 @@ import TransactionsService from '../../services/transactions.service';
 import Transaction from '../../services/transaction';
 
 @Component({
-  selector: 'page-transaction',
-  templateUrl: 'transaction.html'
+  selector: 'page-transaction-edit',
+  templateUrl: 'transaction-edit.html'
 })
-export class TransactionPage {
+export class TransactionEditPage {
   transactionsService: TransactionsService;
   transition: Transaction;
   transactionIndex: number;
