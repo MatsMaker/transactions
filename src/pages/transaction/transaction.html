@@ -7,7 +7,8 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>New transaction</ion-title>
+    <ion-title *ngIf="transition && transactionIndex !== undefined">Edit {{transition.label}}</ion-title>
+    <ion-title *ngIf="transactionIndex === undefined">New transaction</ion-title>
   </ion-navbar>
 
 </ion-header>
