@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-list>
+  <ion-list *ngIf="transition">
     <ion-item>
       <ion-label color="primary" floating>Label</ion-label>
       <ion-input [(ngModel)]="transition.label"></ion-input>
@@ -24,5 +24,8 @@
       <ion-input [(ngModel)]="transition.description"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button full color="secondary" (click)="onNewTransaction()">add</button>
+
+  <button *ngIf="transactionIndex !== undefined" ion-button full color="secondary" (click)="onUpdateTransaction()">save</button>
+  <button *ngIf="transactionIndex === undefined" ion-button full color="secondary" (click)="onNewTransaction()">add</button>
+
 </ion-content>
