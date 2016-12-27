@@ -10,7 +10,11 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <h2>Balans: {{total}}</h2>
+      <h2>Balans:
+        <ion-icon *ngIf="total < 0" name="trending-down"></ion-icon>
+        <ion-icon *ngIf="total > 0" name="trending-up"></ion-icon>
+        {{total}}
+      </h2>
     </ion-item>
   </ion-list>
 </ion-content>

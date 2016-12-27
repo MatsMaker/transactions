@@ -10,8 +10,12 @@
 <ion-content padding>
   <ion-list *ngIf="transition">
     <ion-item>
-      <ion-label color="primary" floating>Price</ion-label>
-      <ion-input type="number" [(ngModel)]="transition.price"></ion-input>
+      <ion-label>Profit</ion-label>
+      <ion-toggle checked="false" [(ngModel)]="transition.profit"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating>Value</ion-label>
+      <ion-input type="number" [(ngModel)]="transition.value"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label color="primary" floating>Label</ion-label>

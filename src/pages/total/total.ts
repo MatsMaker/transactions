@@ -17,7 +17,11 @@ export class TotalPage {
     this.transactionsService.get().then(() => {
       self.total = 0;
       self.transactionsService.data.forEach((transaction) => {
-        self.total += Number(transaction.price);
+        if (transaction.profit) {
+          self.total += Number(transaction.value);
+        } else {
+          self.total -= Number(transaction.value);
+        }
       });
     });
   }

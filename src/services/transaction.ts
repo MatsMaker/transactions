@@ -4,18 +4,19 @@ export default class Transaction {
   id: string;
   createdAt: number;
   updatedAt: number;
-  price: number;
+  value: number;
   label: string;
   description: string;
+  profit: Boolean;
 
-  constructor(label: string = '', description: string = '', price: number = 0) {
+  constructor(label: string = '', description: string = '', value: number = undefined) {
     let time = new Date().getTime();
     this.id = uuidV4();
     this.label = label;
     this.description = description;
     this.createdAt = time;
     this.updatedAt = time;
-    this.price = price;
+    this.value = value;
   }
 
   updated() {
