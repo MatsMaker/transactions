@@ -10,14 +10,14 @@ import { TotalPage } from '../total/total';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  providers: [TransactionsService]
 })
 export class HomePage {
-  transactionsService: TransactionsService;
-  params: Object;
 
-  constructor(public navCtrl: NavController) {
-    this.transactionsService = new TransactionsService();
+  constructor(public navCtrl: NavController, private transactionsService: TransactionsService) { }
+
+  getTransactions() {
     this.transactionsService.get();
   }
 
@@ -30,11 +30,11 @@ export class HomePage {
   }
 
   toView(index) {
-    this.navCtrl.push(TransactionDetailsPage, {transactionIndex: index});
+    this.navCtrl.push(TransactionDetailsPage, { transactionIndex: index });
   }
 
   toEdit(index) {
-    this.navCtrl.push(TransactionEditPage, {transactionIndex: index});
+    this.navCtrl.push(TransactionEditPage, { transactionIndex: index });
   }
 
   onRemove(index) {
@@ -42,9 +42,7 @@ export class HomePage {
   }
 
   ionViewWillEnter() {
-    if(this.transactionsService) {
-      this.transactionsService.get();
-    }
+    this.getTransactions();
   }
 
 }
