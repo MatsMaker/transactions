@@ -25,8 +25,8 @@
       <ion-label color="primary" floating>Description</ion-label>
       <ion-input type="text" [(ngModel)]="transition.description"></ion-input>
     </ion-item>
+    <ion-item>
+      <button ion-button full color="secondary" (click)="onUpdateTransaction()">save</button>
+    </ion-item>
   </ion-list>
-
-  <button ion-button full color="secondary" (click)="onUpdateTransaction()">save</button>
-
 </ion-content>
