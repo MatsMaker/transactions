@@ -5,15 +5,14 @@ import TransactionsService from '../../services/transactions.service';
 
 @Component({
   selector: 'page-total',
-  templateUrl: 'total.html'
+  templateUrl: 'total.html',
+  providers: [TransactionsService]
 })
 export class TotalPage {
-  transactionsService: TransactionsService;
   total: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private transactionsService: TransactionsService) {
     const self = this;
-    this.transactionsService = new TransactionsService();
     this.transactionsService.get().then(() => {
       self.total = 0;
       self.transactionsService.data.forEach((transaction) => {

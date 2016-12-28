@@ -6,15 +6,14 @@ import Transaction from '../../services/transaction';
 
 @Component({
   selector: 'page-transaction-details',
-  templateUrl: 'transaction-details.html'
+  templateUrl: 'transaction-details.html',
+  providers: [TransactionsService],
 })
 export class TransactionDetailsPage {
-  transactionsService: TransactionsService;
   transition: Transaction;
   transactionIndex: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
-    this.transactionsService = new TransactionsService();
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private transactionsService: TransactionsService) {
     this.transactionIndex = navParams.get('transactionIndex');
     this.transactionsService.get()
       .then(() => {

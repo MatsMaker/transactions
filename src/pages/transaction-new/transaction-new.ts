@@ -6,14 +6,13 @@ import Transaction from '../../services/transaction';
 
 @Component({
   selector: 'page-transaction-new',
-  templateUrl: 'transaction-new.html'
+  templateUrl: 'transaction-new.html',
+  providers: [TransactionsService]
 })
 export class TransactionNewPage {
-  transactionsService: TransactionsService;
   transition: Transaction;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
-    this.transactionsService = new TransactionsService();
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, private transactionsService: TransactionsService) {
     this.transactionsService.get()
       .then(() => {
         this.transition = new Transaction();
